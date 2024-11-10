@@ -17,6 +17,7 @@
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
+    "echarts": "^5.5.1",
     "element-ui": "^2.15.14",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",

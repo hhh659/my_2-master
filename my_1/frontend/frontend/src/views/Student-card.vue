@@ -147,7 +147,7 @@ export default {
       console.log("hello");
     },
     goBack() {
-      this.$router.push('/student-dashboard'); // Navigates back to the student-dashboard.vue
+      this.$router.push('/student-home'); // Navigates back to the student-dashboard.vue
     },
   },
   created() {

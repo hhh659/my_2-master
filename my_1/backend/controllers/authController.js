@@ -249,3 +249,45 @@ export const recordAnswer = async (req, res) => {
         res.status(500).json({ error: '服务器错误' });
     }
 };
+
+// 获取用户答题信息
+export const getUserAnswers = async (req, res) => {
+    const { userId, selectedQuestionId } = req.params; // 获取路由参数
+    try {
+        // 根据userId和selectedQuestionId查询答案
+        const answers = await StudentAnswer.findAll({
+            where: { studentId: userId, questionId: selectedQuestionId },
+            attributes: ['selection', 'questionId'],
+            raw: true,
+        });
+        console.log('Raw Answers:', answers); // 打印所有检索到的答题记录
+
+        const answerCounts = answers.reduce((acc, answer) => {
+            // 将selection字段按逗号分割，然后对每个选项进行计数
+            answer.selection.split(',').forEach(option => {
+                acc[option] = (acc[option] || 0) + 1;
+            });
+            return acc;
+        }, {});
+
+        console.log('Answer Counts:', answerCounts); // 打印统计结果
+        res.status(200).json(answerCounts);
+
+    } catch (error) {
+        console.error('获取用户答题信息错误:', error);
+        res.status(500).json({ error: '服务器错误' });
+    }
+};
+
+export const getQuestions = async (req, res) => {
+    try {
+        const questions = await Question.findAll({
+            attributes: ['id', 'questionImage', 'analysisImage', 'knowledgePoint', 'answer', 'optionA', 'optionB', 'optionC', 'optionD'],
+        });
+        res.status(200).json(questions);
+
+    } catch (error) {
+        console.error('获取题目列表错误:', error);
+        res.status(500).json({ error: '服务器错误' });
+    }
+};

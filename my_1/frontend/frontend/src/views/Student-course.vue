@@ -11,7 +11,7 @@
       <div class="header-right">
         <span class="welcome-message" style="font-size: 20px">欢迎您，{{ user.username || '加载中...' }}!</span>
         <span class="user-score">得分: {{ user.score}} 分</span>
-        <el-button type="danger" @click="logout">退出</el-button>
+        <el-button @click="goBack" class="back-button" type="danger">返回</el-button>
       </div>
     </el-header>
 
@@ -60,28 +60,7 @@ export default {
       window.open(url, '_blank');
     },
 
-    // 退出登录
-    logout() {
-      this.$confirm("此操作将退出登录, 是否继续?", "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-        type: "warning",
-      })
-          .then(() => {
-            clearToken();
-            this.$message({
-              type: "success",
-              message: "退出登录成功!",
-            });
-            this.$router.push("/");
-          })
-          .catch(() => {
-            this.$message({
-              type: "info",
-              message: "已取消",
-            });
-          });
-    },
+
     // 获取用户信息
     async fetchUser() {
       const token = localStorage.getItem('token');
@@ -112,6 +91,9 @@ export default {
     // 重置卡片标题颜色
     resetTitleColor() {
       this.cardTitleColor = 'black'; // 默认颜色
+    },
+    goBack() {
+      this.$router.push({ path: '/student-learn' });
     },
   },
   created() {

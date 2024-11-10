@@ -45,7 +45,7 @@
 
           <!-- 我的 -->
           <el-col :span="6">
-            <el-card @click="menuClick('Student-card')" class="card" shadow="hover">
+            <el-card @click="menuClick('Student-home')" class="card" shadow="hover">
               <img src="/p4.png" alt="我的图标" class="card-icon" />
               <div class="card-content">我的</div>
             </el-card>

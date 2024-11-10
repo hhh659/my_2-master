@@ -8,6 +8,8 @@ import StudentPass from "../views/Student-pass.vue";
 import StudentCard from "../views/Student-card.vue";
 import StudentLearn from "../views/Student-learn.vue"; // 确保路径正确
 import StudentCourse from "../views/Student-course.vue"; // 确保路径正确
+import StudentHome from "../views/Student-home.vue"; // 确保路径正确
+import StudentData from "../views/Student-data.vue"; // 确保路径正确
 
 
 const routes = [
@@ -51,6 +53,16 @@ const routes = [
         path: '/student-course',
         name: 'StudentCourse',
         component: StudentCourse,
+    },
+    {
+        path: '/student-home',
+        name: 'StudentHome',
+        component: StudentHome,
+    },
+    {
+        path: '/student-data',
+        name: 'StudentData',
+        component: StudentData,
     }
 
 ];
